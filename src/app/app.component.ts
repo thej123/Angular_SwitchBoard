@@ -6,49 +6,40 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  time = null;
-  PSTbool = false
-  MSTbool = false
-  CSTbool = false
-  ESTbool = false
+ list = Randomize();
+ array = this.list[0]
+ color = this.list[1]
+ Turn(val, index){
+    console.log(val)
+    if (val == 'on') {
+      this.array[index] = 'off';
+      this.color[index] = 'green';
+    } else {
+      this.array[index] = 'on';
+      this.color[index] = 'red';
+    }
+ }
 
-  ShowPST() {
-    this.time = Date.now()
-    this.PSTbool = true
-    this.MSTbool = false
-    this.CSTbool = false
-    this.ESTbool = false
+
+}
+
+function Randomize() {
+  var array = ['on', 'on', 'on', 'on', 'on', 'off', 'off', 'off', 'off', 'off']
+  var colorarray = ['red', 'red', 'red', 'red', 'red', 'green', 'green', 'green', 'green', 'green'] 
+  for (var i=0; i<array.length; i++) {
+    let index = Math.floor(Math.random()*i) + 1;
+    let temp = array[i];
+    let temp2 = colorarray[i];
+    array[i] = array[index];
+    colorarray[i] = colorarray[index];
+    array[index] = temp;
+    colorarray[index] = temp2;
   }
-  ShowMST() {
-    this.time = new Date();
-    this.time.setHours(this.time.getHours() + 1);
-    this.PSTbool = false
-    this.MSTbool = true
-    this.CSTbool = false
-    this.ESTbool = false
-  }
-  ShowCST() {
-    this.time = new Date();
-    this.time.setHours(this.time.getHours() + 2);
-    this.PSTbool = false
-    this.MSTbool = false
-    this.CSTbool = true
-    this.ESTbool = false
-  }
-  ShowEST() {
-    this.time = new Date();
-    this.time.setHours(this.time.getHours() + 3);
-    this.PSTbool = false
-    this.MSTbool = false
-    this.CSTbool = false
-    this.ESTbool = true
-  }
-  
-  Clear() {
-    this.time = null;
-    this.PSTbool = false
-    this.MSTbool = false
-    this.CSTbool = false
-    this.ESTbool = false
-  }
+  let x = Math.floor(Math.random()*array.length-1) + 1;
+  let temp = array[x];
+  let temp2 = colorarray[x];
+  array[x] = array[0];
+  colorarray[x] = colorarray[0];
+
+  return [array, colorarray]
 }

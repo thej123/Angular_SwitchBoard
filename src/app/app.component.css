@@ -1,9 +1,14 @@
 .red { background-color: red }
+.green { background-color: green }
 .bold { font-weight: bold }
 .yellow { background-color: yellow; }
 
-.barrcode {
+button {
     display: inline-block;
     height: 100px;
     width: 100px;
+}
+
+div{
+    display: inline-block;
 }
