@@ -1,19 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:left">
+<div style="text-align:center">
   <h1>
-    Retro Barcode Generator<br>
+    US Time Zone Display<br>
   </h1>
-  <div class="barrcode" [ngStyle]="{'background-color': randomColors[0]}"></div>
-  <div class="barrcode"[ngStyle]="{'background-color': randomColors[1]}"></div>
-  <div class="barrcode"[ngStyle]="{'background-color': randomColors[2]}"></div>
-  <div class="barrcode"[ngStyle]="{'background-color': randomColors[3]}"></div>
-  <div class="barrcode"[ngStyle]="{'background-color': randomColors[4]}"></div>
-  <div class="barrcode"[ngStyle]="{'background-color': randomColors[5]}"></div>
-  <div class="barrcode"[ngStyle]="{'background-color': randomColors[6]}"></div>
-  <div class="barrcode"[ngStyle]="{'background-color': randomColors[7]}"></div>
-  <div class="barrcode"[ngStyle]="{'background-color': randomColors[8]}"></div>
-  <div class="barrcode"[ngStyle]="{'background-color': randomColors[9]}"></div>
-
+  <button [ngClass]="{'yellow':PSTbool}" (click)='ShowPST()'>PST</button>
+  <button [ngClass]="{'yellow':MSTbool}" (click)='ShowMST()'>MST</button>
+  <button [ngClass]="{'yellow':CSTbool}" (click)='ShowCST()'>CST</button>
+  <button [ngClass]="{'yellow':ESTbool}" (click)='ShowEST()'>EST</button>
+  <button (click)='Clear()'>Clear</button>
+  <h2 id="time">{{ time | date:'longDate' }} {{ time | date:'mediumTime' }}</h2>
   <h2 *ngIf='myBoolean'>Show this!</h2>
   <h2 *ngIf='!myBoolean'>Dont Show this!</h2>
 

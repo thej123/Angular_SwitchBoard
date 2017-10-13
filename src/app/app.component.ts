@@ -6,20 +6,49 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  randomColors = randomGen()
-}
+  time = null;
+  PSTbool = false
+  MSTbool = false
+  CSTbool = false
+  ESTbool = false
 
-function randomGen() {
-  var randomColors = ["AntiqueWhite", "Chartreuse", "Chocolate", "Cyan", "DarkGreen", "DarkOrchid", "DeepPink", "Fuchsia", "Gold", "Red"]
-  for (var i=randomColors.length-1; i > 0; i--) {
-    let index = Math.floor(Math.random()*i) + 1;
-    let temp = randomColors[i];
-    randomColors[i] = randomColors[index];
-    randomColors[index] = temp;
+  ShowPST() {
+    this.time = Date.now()
+    this.PSTbool = true
+    this.MSTbool = false
+    this.CSTbool = false
+    this.ESTbool = false
   }
-  let x = Math.floor(Math.random()*randomColors.length-1) + 1;
-  let temp = randomColors[x];
-  randomColors[x] = randomColors[0];
-  randomColors[0] = temp;
-  return randomColors;
+  ShowMST() {
+    this.time = new Date();
+    this.time.setHours(this.time.getHours() + 1);
+    this.PSTbool = false
+    this.MSTbool = true
+    this.CSTbool = false
+    this.ESTbool = false
+  }
+  ShowCST() {
+    this.time = new Date();
+    this.time.setHours(this.time.getHours() + 2);
+    this.PSTbool = false
+    this.MSTbool = false
+    this.CSTbool = true
+    this.ESTbool = false
+  }
+  ShowEST() {
+    this.time = new Date();
+    this.time.setHours(this.time.getHours() + 3);
+    this.PSTbool = false
+    this.MSTbool = false
+    this.CSTbool = false
+    this.ESTbool = true
+  }
+  
+  Clear() {
+    this.time = null;
+    this.PSTbool = false
+    this.MSTbool = false
+    this.CSTbool = false
+    this.ESTbool = false
+  }
 }
